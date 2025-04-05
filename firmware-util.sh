@@ -31,7 +31,7 @@ fi
 
 # clear screen / show banner
 printf "\ec"
-echo -e "\nMrChromebox Firmware Utility Script starting up"
+echo -e "\nMrChromebox Firmware Utility Script starting mmmmmmmmmmmmmmmm up"
 
 #check for cmd line param, expired CrOS certs
 if ! curl -sLo /dev/null https://mrchromebox.tech/index.html || [[ "$1" = "-k" ]]; then
