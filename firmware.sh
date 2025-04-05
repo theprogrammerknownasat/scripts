@@ -141,7 +141,7 @@ recover.Not all boards can be tested prior to release, and even then slight
 differences in hardware can lead to unforseen failures.
 If you don't have the ability to recover from a bad flash, you're taking a risk.
 
-You have been warned."
+You have been warned. poop"
 
     [[ "$isChromeOS" = true ]] && echo_yellow "Also, flashing Full ROM firmware will remove your ability to run ChromeOS."
 
