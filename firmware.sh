@@ -263,7 +263,7 @@ Please select the number for the correct option from the list below:"
     # create backup if existing firmware is stock
     if [[ "$isStock" = "true" ]]; then
         if [[ "$isEOL" = "false" ]]; then
-            REPLY=y
+            REPLY=n
         else
             echo_yellow "\nCreate a backup copy of your stock firmware?"
             read -erp "This is highly recommended in case you wish to return your device to stock
