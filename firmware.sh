@@ -677,48 +677,7 @@ See: https://google.com/chromeos/recovery for more info."
 
 function restore_fw_from_usb()
 {
-    read -rep "
-Connect the USB/SD device which contains the backed-up stock firmware and press [Enter] to continue. "
-
-        list_usb_devices || { exit_red "No USB devices available to read firmware backup."; return 1; }
-        usb_dev_index=""
-        while [[ "$usb_dev_index" = "" || ($usb_dev_index -le 0 && $usb_dev_index -gt $num_usb_devs) ]]; do
-            read -rep "Enter the number for the device which contains the stock firmware backup: " usb_dev_index
-            if [[ "$usb_dev_index" = "" || ($usb_dev_index -le 0 && $usb_dev_index -gt $num_usb_devs) ]]; then
-                echo -e "Error: Invalid option selected; enter a number from the list above."
-            fi
-        done
-        usb_device="${usb_devs[${usb_dev_index}-1]}"
-        mkdir /tmp/usb > /dev/null 2>&1
-        mount "${usb_device}" /tmp/usb > /dev/null 2>&1
-        if [ $? -ne 0 ]; then
-            mount "${usb_device}1" /tmp/usb
-        fi
-        if [ $? -ne 0 ]; then
-            echo_red "USB device failed to mount; cannot proceed."
-            read -rep "Press [Enter] to return to the main menu."
-            umount /tmp/usb > /dev/null 2>&1
-            return
-        fi
-        #select file from USB device
-        echo_yellow "\n(Potential) Firmware Files on USB:"
-        if ! ls  /tmp/usb/*.{rom,ROM,bin,BIN} 2>/dev/null | xargs -n 1 basename 2>/dev/null; then
-            echo_red "No firmware files found on USB device."
-            read -rep "Press [Enter] to return to the main menu."
-            umount /tmp/usb > /dev/null 2>&1
-            return 1
-        fi
-        echo -e ""
-        read -rep "Enter the firmware filename:  " firmware_file
-        firmware_file=/tmp/usb/${firmware_file}
-        if [ ! -f ${firmware_file} ]; then
-            echo_red "Invalid filename entered; unable to restore stock firmware."
-            read -rep "Press [Enter] to return to the main menu."
-            umount /tmp/usb > /dev/null 2>&1
-            return 1
-        fi
-        #text spacing
-        echo -e ""
+    return 1
 }
 
 function restore_fw_from_recovery()
